@@ -1,0 +1,59 @@
+// Variables
+$status-width: 15rem;
+$status-primary-font-size: 1.15rem;
+$status-primary-margin-bottom: 0.5rem;
+
+$status-online-color: #6a3cb0;
+$status-offline-color: #b22084;
+$status-unknown-color: grey;
+$status-secondary-color: #625e67;
+
+// SCSS
+#status {
+  display: block;
+  width: $status-width;
+}
+
+.status {
+  p:first-of-type {
+    font-weight: bold;
+    animation: pulse 2s infinite;
+    margin: 0 0 $status-primary-margin-bottom 0;
+    font-size: $status-primary-font-size;
+  }
+}
+
+.status-online {
+  p:first-of-type {
+    color: $status-online-color;
+  }
+}
+
+.status-offline {
+  p:first-of-type {
+    color: $status-offline-color;
+  }
+}
+
+.status-unknown {
+  p:first-of-type {
+    color: $status-unknown-color;
+  }
+}
+
+p:last-of-type {
+  margin: 0;
+  color: $status-secondary-color;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

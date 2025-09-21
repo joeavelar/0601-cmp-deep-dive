@@ -1,0 +1,32 @@
+// Variables
+$control-label-font-size: 0.8rem;
+$control-label-font-weight: bold;
+$control-label-margin-bottom: 0.15rem;
+$control-label-color: #4f4b53;
+
+$control-input-padding: 0.5rem;
+$control-input-border-color: #ccc;
+$control-input-border-radius: 4px;
+$control-input-font-size: 0.9rem;
+$control-input-color: #4f4b53;
+
+.control {
+  label {
+    display: block;
+    font-size: $control-label-font-size;
+    font-weight: $control-label-font-weight;
+    margin-bottom: $control-label-margin-bottom;
+    color: $control-label-color;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: $control-input-padding;
+    border: 1px solid $control-input-border-color;
+    border-radius: $control-input-border-radius;
+    font: inherit;
+    font-size: $control-input-font-size;
+    color: $control-input-color;
+  }
+}

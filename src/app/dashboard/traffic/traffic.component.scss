@@ -1,0 +1,48 @@
+// Variables
+$traffic-width-mobile: 15rem;
+$traffic-width-desktop: 20rem;
+$traffic-p-margin-bottom: 1rem;
+$traffic-p-font-size: 0.9rem;
+$traffic-p-color: #4f4b53;
+
+$chart-height: 10rem;
+$chart-gap: 0.5rem;
+$chart-padding-x: 0.5rem;
+$chart-border-color: #76737a;
+
+$chart-bar-gradient-start: #36166f;
+$chart-bar-gradient-end: #ca19a4;
+$chart-bar-radius: 4px;
+
+#traffic {
+  display: block;
+  width: $traffic-width-mobile;
+}
+
+p {
+  margin: 0 0 $traffic-p-margin-bottom 0;
+  font-size: $traffic-p-font-size;
+  color: $traffic-p-color;
+}
+
+#chart {
+  height: $chart-height;
+  display: flex;
+  align-items: flex-end;
+  gap: $chart-gap;
+  padding: 0 $chart-padding-x;
+  border-bottom: 1px solid $chart-border-color;
+
+  div {
+    flex: 1;
+    background: linear-gradient(to bottom, $chart-bar-gradient-start, $chart-bar-gradient-end);
+    border-top-left-radius: $chart-bar-radius;
+    border-top-right-radius: $chart-bar-radius;
+  }
+}
+
+@media (min-width: 768px) {
+  #traffic {
+    width: $traffic-width-desktop;
+  }
+}

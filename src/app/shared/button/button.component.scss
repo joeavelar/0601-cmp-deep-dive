@@ -1,0 +1,37 @@
+// Variables
+$button-padding: 0.65rem 1.35rem;
+$button-border-radius: 0.25rem;
+$button-font-size: 1rem;
+$button-bg-color: #691ebe;
+$button-hover-bg-color: #551b98;
+$button-text-color: white;
+
+$icon-margin-left: 0.5rem;
+$icon-hover-translate-x: 4px;
+$icon-transition: transform 0.2s ease-in-out;
+
+button {
+  display: inline-block;
+  padding: $button-padding;
+  border-radius: $button-border-radius;
+  font-size: $button-font-size;
+  text-align: center;
+  cursor: pointer;
+  background-color: $button-bg-color;
+  color: $button-text-color;
+  border: none;
+
+  &:hover {
+    background-color: $button-hover-bg-color;
+
+    .icon {
+      transform: translateX($icon-hover-translate-x);
+    }
+  }
+}
+
+.icon {
+  display: inline-block;
+  margin-left: $icon-margin-left;
+  transition: $icon-transition;
+}
