@@ -10,7 +10,7 @@ $icon-margin-left: 0.5rem;
 $icon-hover-translate-x: 4px;
 $icon-transition: transform 0.2s ease-in-out;
 
-button {
+:host {
   display: inline-block;
   padding: $button-padding;
   border-radius: $button-border-radius;
