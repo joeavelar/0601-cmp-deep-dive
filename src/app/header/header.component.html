@@ -16,7 +16,10 @@
         <button appButton>
           <!-- This is the contect that we'll be passing to the Button[appButton] extended button.component.ts -->
           Logout 
-          <span class="icon">→</span>
+          <!-- <span class="icon">→</span> -->
+
+          <!-- Using 'ngProjectAs' allows Angular project a value without encapsulating unnecessary elements wrappers. -->
+          <span  ngProjectAs="icon" >→</span>
         </button>
       </li>
     </ul>
