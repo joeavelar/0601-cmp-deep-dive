@@ -7,7 +7,8 @@ import { Component, Input } from '@angular/core';
   // selector: 'app-button',
 
   // It is good practice to prefix your custom attribute with 'app', example 'appButton'. 
-  selector: 'button[appButton]',
+  // We can also do the samething with anchor tags, example 'a[appButton]'.
+  selector: 'button[appButton], a[appButton]',
   standalone: true,
   imports: [],
   templateUrl: './button.component.html',
