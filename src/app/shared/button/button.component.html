@@ -11,7 +11,10 @@
   </span>
   <!-- Using the ng-content with a selector, for example class of '.icon', this tells Angular where to place the data -->
    <span class="icon">
-    <ng-content select="icon" />
+    <ng-content select="icon">
+      <!-- Creating a fallback when no data is passed, works with the latest version of Angular. -->
+       →
+    </ng-content>
    </span>
   
 
