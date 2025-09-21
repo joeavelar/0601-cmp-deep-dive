@@ -9,7 +9,7 @@ $status-unknown-color: grey;
 $status-secondary-color: #625e67;
 
 // SCSS
-#status {
+:host {
   display: block;
   width: $status-width;
 }

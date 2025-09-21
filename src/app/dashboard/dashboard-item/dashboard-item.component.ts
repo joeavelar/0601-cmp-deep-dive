@@ -5,7 +5,10 @@ import { Component, Input, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './dashboard-item.component.html',
-  styleUrl: './dashboard-item.component.scss'
+  styleUrl: './dashboard-item.component.scss',
+  // host: {
+  //   class: "dashboard-item"
+  // },
 })
 
 // This component will be called called from the following components

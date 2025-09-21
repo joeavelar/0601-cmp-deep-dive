@@ -6,7 +6,7 @@ $tickets-p-color: #4f4b53;
 $tickets-h2-color: #38343c;
 $tickets-h2-font-size: 1.1rem;
 
-#tickets {
+:host {
   display: flex;
   flex-direction: column;
   gap: $tickets-gap;
@@ -35,7 +35,7 @@ $tickets-h2-font-size: 1.1rem;
 }
 
 @media (min-width: 768px) {
-  #tickets {
+  :host {
     flex-direction: row;
   }
 }

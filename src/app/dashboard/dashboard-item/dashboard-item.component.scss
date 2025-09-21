@@ -11,7 +11,7 @@ $dashboard-header-margin-bottom: 1rem;
 $dashboard-title-color: #504e50;
 $dashboard-title-font-size: 0.9rem;
 
-.dashboard-item {
+:host {
   display: block;
   padding: $dashboard-padding-mobile;
   border: 1px solid $dashboard-border-color;
@@ -42,7 +42,7 @@ h2 {
 }
 
 @media (min-width: 768px) {
-  .dashboard-item {
+  :host {
     padding: $dashboard-padding-desktop;
   }
 }

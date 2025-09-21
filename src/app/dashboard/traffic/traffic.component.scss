@@ -14,7 +14,7 @@ $chart-bar-gradient-start: #36166f;
 $chart-bar-gradient-end: #ca19a4;
 $chart-bar-radius: 4px;
 
-#traffic {
+:host {
   display: block;
   width: $traffic-width-mobile;
 }
@@ -42,7 +42,7 @@ p {
 }
 
 @media (min-width: 768px) {
-  #traffic {
+  :host {
     width: $traffic-width-desktop;
   }
 }
