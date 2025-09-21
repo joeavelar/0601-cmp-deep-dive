@@ -12,13 +12,11 @@
         <a href="/">Management</a>
       </li>
       <li>
-        <button>
-          <span>
-            Logout
-          </span>
-          <span class="icon">
-            →
-          </span>
+        <!-- Calls a custom component that extends the button element -->
+        <button appButton>
+          <!-- This is the contect that we'll be passing to the Button[appButton] extended button.component.ts -->
+          Logout 
+          <span class="icon">→</span>
         </button>
       </li>
     </ul>

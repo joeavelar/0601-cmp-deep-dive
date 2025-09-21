@@ -1,0 +1,23 @@
+<!-- Example of extending a Built-in Elements component with Custom Componenets via Attribute Selectors 
+     We should focus on having the actual content that we want without the "buttone" element.
+-->
+
+  <!-- <span>Logout</span> -->
+  <!-- <span class="icon">→</span> -->
+
+  <!-- 2 place holders for our content, instead of using an inbound variable -->
+  <span>
+    <ng-content  />
+  </span>
+  <!-- Using the ng-content with a selector, for example class of '.icon', this tells Angular where to place the data -->
+  <ng-content select=".icon" />
+
+<!-- This is the example that was converted. -->
+<!-- <button>
+  <span>
+    Logout
+  </span>
+  <span class="icon">
+    →
+  </span>
+</button> -->
