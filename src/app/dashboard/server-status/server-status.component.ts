@@ -12,7 +12,10 @@ export class ServerStatusComponent {
   // When specific string values are used/needed, use the TypeScript feature called "Literal Types"
   currentStatus: 'online' | 'offline' | 'unknown' = 'online'; 
 
-  constructor() {
+  constructor() {}
+
+  // Runs once after Angular has initialized all the component's inputs.
+  ngOnInit() {
     setInterval(() => {
       const rnd = Math.random(); // 0 to 0.99999
 
@@ -26,7 +29,7 @@ export class ServerStatusComponent {
         this.currentStatus = 'unknown';
         // console.log('unknwon');
       }
-    }, 5000); 
+    }, 3000); 
   }
 
 }
