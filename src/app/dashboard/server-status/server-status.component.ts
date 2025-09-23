@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.scss'
 })
-export class ServerStatusComponent {
+export class ServerStatusComponent implements OnInit {
   // When specific string values are used/needed, use the TypeScript feature called "Literal Types"
   currentStatus: 'online' | 'offline' | 'unknown' = 'online'; 
 
