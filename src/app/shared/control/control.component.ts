@@ -1,4 +1,4 @@
-import { Component, HostListener, input, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -9,8 +9,8 @@ import { Component, HostListener, input, ViewEncapsulation } from '@angular/core
   encapsulation: ViewEncapsulation.None, // allows us to use SCSS nested classes like .control input, and .control textarea. This is not normally used.
   host: {
     // This defined once, but the class is added to 'app-contorl' whereever it's being used. 
-    class: 'control',
-    '(click)': 'onClick()'
+    class: 'control'
+    ,'(click)': 'onClick()'
   },
 })
 export class ControlComponent {
@@ -23,10 +23,13 @@ export class ControlComponent {
   //   console.log('Clicked!');
   // };
 
-  lable = input.required<string>();
-
   onClick() {
     console.log('Clicked!');
+    console.log(this.el);
   }
+
+
+  lable = input.required<string>();
+  private el = inject(ElementRef); // becareful in using ElementRef to change data programatically, instead use Angular 
 
 }
