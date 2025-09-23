@@ -1,10 +1,20 @@
 <!-- using '[class]' to dynamically bind the 'class' -->
-<div [class]="{
+<!-- You can also bind [styles] dynamically 
+<div 
+  [class]="{ ... }"
+  [style]="{
+    fontSize: '30px',
+  }"
+  > 
+-->
+<div 
+  [class]="{
   status: true,
   'status-online': currentStatus === 'online',
   'status-offline': currentStatus === 'offline',
   'status-unknown': currentStatus === 'unknown'
-}">
+  }"
+  >
   @if (currentStatus === 'online') {
     <p>Servers are online</p>
     <p>All systems are operational.</p>
