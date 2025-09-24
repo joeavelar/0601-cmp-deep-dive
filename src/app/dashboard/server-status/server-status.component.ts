@@ -16,6 +16,7 @@ export class ServerStatusComponent implements OnInit {
 
   // Runs once after Angular has initialized all the component's inputs.
   ngOnInit() {
+    console.log('We hit ngOnInit');
     setInterval(() => {
       const rnd = Math.random(); // 0 to 0.99999
 
@@ -30,6 +31,10 @@ export class ServerStatusComponent implements OnInit {
         // console.log('unknwon');
       }
     }, 3000); 
+  }
+
+  ngAfterViewInit() {
+    console.log("We hit ngAfterViewInit");
   }
 
 }
