@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 
 @Component({
@@ -8,16 +8,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.scss'
 })
-export class ServerStatusComponent implements OnInit {
+export class ServerStatusComponent implements OnInit, OnDestroy {
   // When specific string values are used/needed, use the TypeScript feature called "Literal Types"
   currentStatus: 'online' | 'offline' | 'unknown' = 'online'; 
+  private IntervalID!: ReturnType<typeof setInterval>;
+  // private IntervalID?: NodeJS.Timeout; // is generating an error. 
 
   constructor() {}
 
   // Runs once after Angular has initialized all the component's inputs.
   ngOnInit() {
     console.log('We hit ngOnInit');
-    setInterval(() => {
+    this.IntervalID = setInterval(() => {
       const rnd = Math.random(); // 0 to 0.99999
 
       if (rnd < 0.5 ) {
@@ -35,6 +37,13 @@ export class ServerStatusComponent implements OnInit {
 
   ngAfterViewInit() {
     console.log("We hit ngAfterViewInit");
+  }
+
+  ngOnDestroy(): void {
+    // We will do clean up work as required. 
+
+    // clearInterval(this.IntervalID);  // 
+    clearTimeout(this.IntervalID);  
   }
 
 }
