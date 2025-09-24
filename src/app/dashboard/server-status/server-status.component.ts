@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnDestroy, OnInit, inject } from '@angular/core';
 
 
 @Component({
@@ -8,18 +8,26 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.scss'
 })
-export class ServerStatusComponent implements OnInit, OnDestroy {
+export class ServerStatusComponent implements OnInit {
   // When specific string values are used/needed, use the TypeScript feature called "Literal Types"
   currentStatus: 'online' | 'offline' | 'unknown' = 'online'; 
-  private IntervalID!: ReturnType<typeof setInterval>;
+
+  // Used for ngOnDestroy() method
+  // private IntervalID!: ReturnType<typeof setInterval>;
   // private IntervalID?: NodeJS.Timeout; // is generating an error. 
+
+  // modern method without using ngOnDestroy() method
+  private desstroyRef = inject(DestroyRef);
+
 
   constructor() {}
 
   // Runs once after Angular has initialized all the component's inputs.
   ngOnInit() {
     console.log('We hit ngOnInit');
-    this.IntervalID = setInterval(() => {
+    // this.IntervalID = setInterval(() => {
+    // this is the alternate method using DestroyRef option, we'll use: const interval
+    const interval = setInterval(() => {
       const rnd = Math.random(); // 0 to 0.99999
 
       if (rnd < 0.5 ) {
@@ -33,17 +41,25 @@ export class ServerStatusComponent implements OnInit, OnDestroy {
         // console.log('unknwon');
       }
     }, 3000); 
+
+    // This is the new modern method for cleaning up left over data/memory/etc.
+    this.desstroyRef.onDestroy(() => {
+      clearInterval(interval);
+    });
   }
 
   ngAfterViewInit() {
     console.log("We hit ngAfterViewInit");
   }
 
-  ngOnDestroy(): void {
-    // We will do clean up work as required. 
+  // ngOnDestroy(): void {
+  //   // We will do clean up work as required. 
 
-    // clearInterval(this.IntervalID);  // 
-    clearTimeout(this.IntervalID);  
-  }
+  //   // clearInterval(this.IntervalID);  // 
+  //   clearTimeout(this.IntervalID);  
+  // }
+
+  // alternative method to ngOnDestroy()
+
 
 }
