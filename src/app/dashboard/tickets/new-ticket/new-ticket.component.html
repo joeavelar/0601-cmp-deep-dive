@@ -1,22 +1,17 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit(titleInput)">
   <p>
-    <!-- <label>Title</label> -->
-    <!-- <input name="title" id="title" /> -->
-     <!-- <input name="title" id="title" placeholder="" title="Title" /> -->
-
     <!-- This <app-contorl> is a shared control that allows us to pass input and textarea data with a label, and context so that we can 
          have a standard input, textarea control with predefined SCSS, etc. 
          Note that in this example, ngProjectAs is not required.
     -->
     <app-control lable="Title" >
-      <input name="title" id="title" placeholder="Enter your title" title="Title" />
+      <!-- An alternate method of passing data is to use a template variable that starts with '#' and is an Angluar feature. -->
+      <input name="title" id="title" placeholder="Enter your title" title="Title" #titleInput />
     </app-control>
   </p>
   <p>
-    <!-- <label>Request</label> -->
-    <!-- <textarea name="request" id="request" rows="3" placeholder="Enter your request" title="Request"></textarea> -->
     <app-control lable="Request" >
-      <textarea name="request" id="request" rows="3" placeholder="Enter your request" title="Request"></textarea>
+      <textarea name="request" id="request" rows="3" placeholder="Enter your request" title="Request"  ></textarea>
     </app-control>
   </p>
   <p>
@@ -26,6 +21,39 @@
         <!-- We need to wrap the icon within a span so that it can be correctly interpreted by the button.component template. -->
         <span  ngProjectAs="icon">⌲</span>
     </button>
+  </p>
+</form>
+
+
+<!-- xx -->
+<!-- <form (ngSubmit)="onSubmit()">
+  <p> -->
+    <!-- <label>Title</label> -->
+    <!-- <input name="title" id="title" /> -->
+     <!-- <input name="title" id="title" placeholder="" title="Title" /> -->
+
+    <!-- This <app-contorl> is a shared control that allows us to pass input and textarea data with a label, and context so that we can 
+         have a standard input, textarea control with predefined SCSS, etc. 
+         Note that in this example, ngProjectAs is not required.
+    -->
+    <!-- <app-control lable="Title" >
+      <input name="title" id="title" placeholder="Enter your title" title="Title" />
+    </app-control>
+  </p>
+  <p> -->
+    <!-- <label>Request</label> -->
+    <!-- <textarea name="request" id="request" rows="3" placeholder="Enter your request" title="Request"></textarea> -->
+    <!-- <app-control lable="Request" >
+      <textarea name="request" id="request" rows="3" placeholder="Enter your request" title="Request"></textarea>
+    </app-control>
+  </p>
+  <p> -->
+    <!-- When using (ngSubmit), the button type should be set to "submit" -->
+    <!-- <button type="submit" appButton>
+        Submit -->
+        <!-- We need to wrap the icon within a span so that it can be correctly interpreted by the button.component template. -->
+        <!-- <span  ngProjectAs="icon">⌲</span>
+    </button> -->
     <!-- <button>
       <span>
         Submit
@@ -34,5 +62,5 @@
         ⌲
       </span>
     </button> -->
-  </p>
-</form>
+  <!-- </p>
+</form> -->

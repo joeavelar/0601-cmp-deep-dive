@@ -15,8 +15,11 @@ import { ControlComponent } from "../../../shared/control/control.component";
 export class NewTicketComponent {
 
   // called as a result of using 'ngSubmit' within the template. 
-  onSubmit() {
-    console.log('SUBMITTED!'); 
+  onSubmit(titleElement: HTMLInputElement) {
+    // The value can be found within the element on the "value" property in the browser webtools. 
+    const enteredtitle = titleElement.value;
+    console.dir(titleElement);
+    console.log('Entered title:' + enteredtitle); 
   }
 
 }
