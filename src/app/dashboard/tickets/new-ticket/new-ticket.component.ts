@@ -22,11 +22,7 @@ export class NewTicketComponent {
   // onSubmit(title: string, ticketText: string, form: HTMLFormElement) {
 
   // Alternet method of passing "form: HTMLFormElement" when passing as an argument isn't an option. 
-  onSubmit(title: string, ticketText: string) {
-
-
-
-    
+  onSubmit(title: string, ticketText: string) {    
   // onSubmit(titleElement: HTMLInputElement) {
     // The value can be found within the element on the "value" property in the browser webtools. 
     // const enteredtitle = titleElement.value;
