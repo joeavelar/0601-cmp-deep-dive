@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
@@ -14,12 +14,34 @@ import { ControlComponent } from "../../../shared/control/control.component";
 })
 export class NewTicketComponent {
 
+  // passing the template variable, in this example "#form"
+  // @ViewChild('form') form?: ElementRef<HTMLFormElement>; 
+  @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+
   // called as a result of using 'ngSubmit' within the template. 
-  onSubmit(titleElement: HTMLInputElement) {
+  // onSubmit(title: string, ticketText: string, form: HTMLFormElement) {
+
+  // Alternet method of passing "form: HTMLFormElement" when passing as an argument isn't an option. 
+  onSubmit(title: string, ticketText: string) {
+
+
+
+    
+  // onSubmit(titleElement: HTMLInputElement) {
     // The value can be found within the element on the "value" property in the browser webtools. 
-    const enteredtitle = titleElement.value;
-    console.dir(titleElement);
-    console.log('Entered title:' + enteredtitle); 
+    // const enteredtitle = titleElement.value;
+    // console.dir(titleElement);
+    // console.log('Entered title:' + enteredtitle); 
+
+    console.log('Title: ' + title);
+    console.log('Ticket: ' + ticketText);
+
+    // clears all the input elements on the form. 
+    // form.reset(); 
+
+    // Alternate method using ViewChild. 
+    this.form?.nativeElement.reset();
+    
   }
 
 }

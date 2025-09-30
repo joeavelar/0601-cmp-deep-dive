@@ -1,4 +1,6 @@
-<form (ngSubmit)="onSubmit(titleInput)">
+<!-- <form (ngSubmit)="onSubmit(titleInput.value, textInput.value, form)" #form> -->
+  <!-- This is an alternet method of passing #form to the component. -->
+<form (ngSubmit)="onSubmit(titleInput.value, textInput.value)" #form>
   <p>
     <!-- This <app-contorl> is a shared control that allows us to pass input and textarea data with a label, and context so that we can 
          have a standard input, textarea control with predefined SCSS, etc. 
@@ -11,7 +13,7 @@
   </p>
   <p>
     <app-control lable="Request" >
-      <textarea name="request" id="request" rows="3" placeholder="Enter your request" title="Request"  ></textarea>
+      <textarea name="request" id="request" rows="3" placeholder="Enter your request" title="Request" #textInput ></textarea>
     </app-control>
   </p>
   <p>
