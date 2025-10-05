@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
@@ -15,8 +15,10 @@ import { ControlComponent } from "../../../shared/control/control.component";
 export class NewTicketComponent {
 
   // passing the template variable, in this example "#form"
-  // @ViewChild('form') form?: ElementRef<HTMLFormElement>; 
-  @ViewChild('form') form?: ElementRef<HTMLFormElement>;
+  // @ViewChild('form') private form?: ElementRef<HTMLFormElement>; 
+
+  // can be used as a fnction that returns the element.
+  private form = viewChild.required<ElementRef<HTMLFormElement>>('form') ; // is a signnal
 
   // called as a result of using 'ngSubmit' within the template. 
   // onSubmit(title: string, ticketText: string, form: HTMLFormElement) {
@@ -36,7 +38,9 @@ export class NewTicketComponent {
     // form.reset(); 
 
     // Alternate method using ViewChild. 
-    this.form?.nativeElement.reset();
+    this.form()?.nativeElement.reset();
+    
+
     
   }
 
