@@ -1,4 +1,4 @@
-import { Component, contentChild, ContentChild, ElementRef, inject, input, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, contentChild, ContentChild, ElementRef, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -13,7 +13,7 @@ import { Component, contentChild, ContentChild, ElementRef, inject, input, ViewE
     ,'(click)': 'onClick()'
   },
 })
-export class ControlComponent {
+export class ControlComponent implements AfterContentInit {
   // This is similar to using 'host:' within the '@Component()' section
   // This method of using HostBinding() is discouraged. Just here as an example only. Used for backward compatability. 
   // @HostBinding('class') className = 'control';
@@ -23,13 +23,6 @@ export class ControlComponent {
   //   console.log('Clicked!');
   // };
 
-  onClick() {
-    console.log('Clicked!');
-    console.log(this.el);
-    console.log(this.control()); // signals require brackets ()
-  }
-
-
   lable = input.required<string>();
   private el = inject(ElementRef); // becareful in using ElementRef to change data programatically, instead use Angular 
 
@@ -38,5 +31,17 @@ export class ControlComponent {
 
   // Alternative to the above but in a signal format. 
   private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
+
+  ngAfterContentInit(): void {
+      // ensures that data is initialized for 'this.control'. 
+  }
+
+  onClick() {
+    console.log('Clicked!');
+    console.log(this.el);
+    console.log(this.control()); // signals require brackets ()
+  }
+
 
 }
