@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, input, ViewEncapsulation } from '@angular/core';
+import { Component, contentChild, ContentChild, ElementRef, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -26,10 +26,17 @@ export class ControlComponent {
   onClick() {
     console.log('Clicked!');
     console.log(this.el);
+    console.log(this.control()); // signals require brackets ()
   }
 
 
   lable = input.required<string>();
   private el = inject(ElementRef); // becareful in using ElementRef to change data programatically, instead use Angular 
+
+  // For ConetnetChild(''), the '' string is a form template of 'input' found within new-ticket.component.html template. 
+  // @ContentChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
+
+  // Alternative to the above but in a signal format. 
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
 
 }
