@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, OnDestroy, OnInit, effect, inject, signal } from '@angular/core';
 
 
 @Component({
@@ -10,7 +10,11 @@ import { Component, DestroyRef, OnDestroy, OnInit, inject } from '@angular/core'
 })
 export class ServerStatusComponent implements OnInit {
   // When specific string values are used/needed, use the TypeScript feature called "Literal Types"
-  currentStatus: 'online' | 'offline' | 'unknown' = 'online'; 
+  // currentStatus: 'online' | 'offline' | 'unknown' = 'online'; 
+
+  // We can update the currentStatus function to be a signal. 
+  currentStatus = signal<'online' | 'offline' | 'unknown'>('online') ; 
+
 
   // Used for ngOnDestroy() method
   // private IntervalID!: ReturnType<typeof setInterval>;
@@ -20,7 +24,13 @@ export class ServerStatusComponent implements OnInit {
   private desstroyRef = inject(DestroyRef);
 
 
-  constructor() {}
+  constructor() {
+    // using effect() function will result in Angular setting up a subscription to the function within. Otherwise no subscription is setup of effect() function is not used. 
+    effect(() => {
+      console.log(this.currentStatus());
+   }); 
+    
+  }
 
   // Runs once after Angular has initialized all the component's inputs.
   ngOnInit() {
@@ -31,13 +41,16 @@ export class ServerStatusComponent implements OnInit {
       const rnd = Math.random(); // 0 to 0.99999
 
       if (rnd < 0.5 ) {
-        this.currentStatus = 'online';
+        // this.currentStatus = 'online';
+        this.currentStatus.set('online');
         // console.log('online');
       } else if (rnd < 0.9 ) {
-        this.currentStatus = 'offline';
+        // this.currentStatus = 'offline';
+        this.currentStatus.set('offline');
         // console.log('offline');
       } else {
-        this.currentStatus = 'unknown';
+        // this.currentStatus = 'unknown';
+        this.currentStatus.set('unknown');
         // console.log('unknwon');
       }
     }, 3000); 
