@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, contentChild, ContentChild, ElementRef, inject, input, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, Component, contentChild, ContentChild, ElementRef, inject, input, ViewEncapsulation, afterRender, afterNextRender } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -32,6 +32,21 @@ export class ControlComponent implements AfterContentInit {
   // Alternative to the above but in a signal format. 
   private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
 
+  constructor() { 
+
+    // to be called whenever there is a change anywhere in the application. 
+    afterRender(() => {
+      console.log('afterRender called.');
+    //   console.log('ControlComponent constructor() afterRender()');
+    //   console.log(this.el);
+    //   console.log(this.control()); // signals require brackets ()
+    })
+
+    // to be called whenever the next change happens anywhere in teh application. 
+    afterNextRender(() => {
+      console.log('afterNextRender called.');
+    })
+  }
 
   ngAfterContentInit(): void {
       // ensures that data is initialized for 'this.control'. 
