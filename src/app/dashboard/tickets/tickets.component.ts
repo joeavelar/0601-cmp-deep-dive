@@ -12,7 +12,18 @@ import { Ticket } from './ticket.model';
   styleUrl: './tickets.component.scss'
 })
 export class TicketsComponent {
+
   // Using the ticket.model to define an array of Tickets. 
   tickets: Ticket[] = []; 
 
+  onAdd(ticketData: { title: string; text: string; }) {
+    const ticket: Ticket = {
+      title: ticketData.title,
+      request: ticketData.text,
+      id: Math.random().toString(),
+      status: 'open'
+    }
+
+    this.tickets.push(ticket); 
+  }
 }

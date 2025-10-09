@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, output, Output, viewChild, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from '../../../shared/button/button.component';
@@ -20,6 +20,10 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
   // can be used as a fnction that returns the element.
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form') ; // is a signnal
 
+  // @Output() add = new EventEmitter({title: string; text: string});  
+  // alternate modern method for an event emitter.
+  add = output<{title: string; text: string}>(); 
+
   ngOnInit(): void {
       // there is a posibility that 'this.form' is initialized. 
   }
@@ -40,6 +44,7 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
     // console.dir(titleElement);
     // console.log('Entered title:' + enteredtitle); 
 
+    this.add.emit({title: title, text: ticketText});
     console.log('Title: ' + title);
     console.log('Ticket: ' + ticketText);
 
