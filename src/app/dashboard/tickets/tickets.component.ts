@@ -31,6 +31,7 @@ export class TicketsComponent {
   onCloseTicket(id: string) {
     this.tickets = this.tickets.map((ticket) => {
       if (ticket.id === id) {
+        // use the spread operator '...', allowing you to overwrite specific value. In this case returning a new object where only 'status' is updated.
         return { ...ticket, status: 'closed'}
       }
       return ticket; 
